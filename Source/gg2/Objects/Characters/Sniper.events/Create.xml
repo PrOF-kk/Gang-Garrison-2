@@ -17,12 +17,6 @@
 runPower = 0.9;
 weapons[0]=Rifle;
 haxxyStatue = SniperHaxxyStatueS;
-
-// 'GW' reward - *G*olden *W*eapon
-if(hasClassReward(global.paramPlayer, 'GW'))
-    tauntsprite = SniperGoldTauntS;
-else
-    tauntsprite = SniperTauntS;
 </argument>
       </arguments>
     </action>

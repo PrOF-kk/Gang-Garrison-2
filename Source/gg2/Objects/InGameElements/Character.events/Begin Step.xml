@@ -55,14 +55,8 @@ if(!taunting and !omnomnomnom)
     if(!player.humiliated and pressedKeys &amp; $01)  {
         if (!invisible &amp;&amp; cloakAlpha == 1)
             taunting=true;
-        if (team==TEAM_RED) {
-            tauntindex=0;
-            tauntend=tauntlength-1;
-        }
-        else if (team==TEAM_BLUE) {
-            tauntindex=tauntlength;
-            tauntend=tauntlength*2-1;
-        }
+        tauntindex=0;
+        tauntend=tauntlength;
         image_speed=tauntspeed;
     } 
     
@@ -313,11 +307,6 @@ if (intel)
                             intelRecharge + global.delta_factor * // ...After adding some value to it 
                             INTEL_MAX_TIMER/((3+abs(min(hspeed, 7))/3.5)*30)); // ...Which starts at a rate of full charge per three seconds, and reduces linearly with speed, down to full charge per five seconds with a scout's max speed
 }
-var sprite_length;
-if(player.class == CLASS_QUOTE or sprite_special or zoomed)
-    sprite_length = 2;
-else
-    sprite_length = CHARACTER_ANIMATION_LEN;
 
 if (player.humiliated)
 {
@@ -334,6 +323,12 @@ if (player.humiliated)
 }
 else
 {
+    var sprite_length;
+    if(player.class == CLASS_QUOTE or zoomed)
+        sprite_length = 2;
+    else
+        sprite_length = CHARACTER_ANIMATION_LEN;
+
     if (place_free(x,y+1) and hspeed != 0 and player.class == CLASS_QUOTE)
     {
         animationImage = 1;

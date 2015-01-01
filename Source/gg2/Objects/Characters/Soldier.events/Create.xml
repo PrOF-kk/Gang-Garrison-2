@@ -17,12 +17,6 @@
 maxHp = 160;
 weapons[0] = Rocketlauncher;
 haxxyStatue = SoldierHaxxyStatueS;
-
-// 'GW' reward - *G*olden *W*eapon
-if(hasClassReward(global.paramPlayer, 'GW'))
-    tauntsprite = SoldierGoldTauntS;
-else
-    tauntsprite = SoldierTauntS;
 </argument>
       </arguments>
     </action>
@@ -51,14 +45,7 @@ else
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">// 'BH' reward - *B*obble *H*ead
-if(hasClassReward(global.paramPlayer, 'BH'))
-{
-    overlay = HatBobbleSoldierS;
-    tauntOverlay = HatBobbleSoldierTauntS;
-}
-
-numFlames = 4;
+        <argument kind="STRING">numFlames = 4;
 </argument>
       </arguments>
     </action>

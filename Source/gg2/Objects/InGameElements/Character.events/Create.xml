@@ -43,15 +43,30 @@
     onground = true;
     still = true;
     yoffset = 0;
-    sprite_special = global.gg_birthday or global.xmas;
     
     // class sprite vars
-    spriteRun = sprite_index;
-    spriteJump = sprite_index;
-    spriteStand = sprite_index;
-    spriteLeanR = sprite_index;
-    spriteLeanL = sprite_index;
-    spriteIntel = sprite_index; // it's an underlay
+    // TODO Querly animation
+    if(player.class == CLASS_QUOTE)
+    {
+        spriteRun = sprite_index;
+        spriteJump = sprite_index;
+        spriteStand = sprite_index;
+        spriteLeanR = sprite_index;
+        spriteLeanL = sprite_index;
+        spriteIntel = sprite_index; // it's an underlay
+    }
+    else
+    {
+        spriteRun = getCharacterSpriteId(player.class, player.team, "Run");
+        spriteJump = getCharacterSpriteId(player.class, player.team, "Jump");
+        spriteStand = getCharacterSpriteId(player.class, player.team, "Stand");
+        spriteLeanR = getCharacterSpriteId(player.class, player.team, "LeanR");
+        spriteLeanL = getCharacterSpriteId(player.class, player.team, "LeanL");
+        spriteIntel = getCharacterSpriteId(player.class, player.team, "Intel");
+    }
+
+    spriteDead = getCharacterSpriteId(player.class, player.team, "Dead");
+    humiliationPoses = getCharacterSpriteId(player.class, player.team, "H");
     
     //afterburn stuff
     burnIntensity = 0; // "heat"
@@ -85,9 +100,37 @@
     aimDistance = 0;
 
     image_speed = 0;
-    tauntspeed = 3;
-    tauntlength = sprite_get_number(tauntsprite)/2;
     
+    var tauntspriteAnimName, tauntspriteName;
+    tauntspriteAnimName = "Taunt";
+    
+    // 'GW' reward - *G*olden *W*eapon
+    if(hasClassReward(player, 'GW'))
+    {
+        switch(player.class)
+        {
+            case CLASS_SCOUT:
+            case CLASS_SOLDIER:
+            case CLASS_SNIPER:
+            case CLASS_DEMOMAN:
+            case CLASS_HEAVY:
+            case CLASS_PYRO:
+                tauntspriteAnimName = "GoldTaunt";
+                break;
+        }
+    }
+    
+    tauntsprite = getCharacterSpriteId(player.class, player.team, tauntspriteAnimName);
+    tauntspeed = 1;
+    tauntlength = sprite_get_number(tauntsprite);
+
+    omnomnomnomSprite = getCharacterSpriteId(CLASS_HEAVY, player.team, "Omnomnomnom");
+    // 'GW' reward - *G*olden *W*eapon
+    if(hasClassReward(global.paramPlayer, 'GW'))
+    {
+        omnomnomnomSprite = getCharacterSpriteId(CLASS_HEAVY, player.team, "GoldOmnomnomnom");
+    }
+
     animationOffset = CHARACTER_ANIMATION_NORMAL;
     animationImage = 0;
     humiliationOffset = irandom(10)*3; //support for 10 different animations is more than enough
@@ -154,7 +197,6 @@
     overlay = -1;
     tauntOverlay = -1;
     omnomnomnomOverlay = -1;
-    omnomnomnomSprite = OmnomnomnomS;
     sniperCrouchOverlay = -1;
     demon = -1;
     demonX = 0;
@@ -174,7 +216,7 @@
         overlay = global.HatBobbleClassOverlay[player.class];
         tauntOverlay = global.HatBobbleClassTaunt[player.class];
     }
-
+    
     if (hasReward(player, 'WillOWisp'))
     {
         demon = WillOWispS;

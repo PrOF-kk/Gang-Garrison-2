@@ -17,12 +17,6 @@
 maxHp = 120;
 weapons[0] = Flamethrower;
 haxxyStatue = PyroHaxxyStatueS;
-
-// 'GW' reward - *G*olden *W*eapon
-if(hasClassReward(global.paramPlayer, 'GW'))
-    tauntsprite = PyroGoldTauntS;
-else
-    tauntsprite = PyroTauntS;
 </argument>
       </arguments>
     </action>

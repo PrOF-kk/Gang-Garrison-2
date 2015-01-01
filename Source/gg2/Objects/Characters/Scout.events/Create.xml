@@ -17,12 +17,6 @@
 maxHp = 100;
 weapons[0] = Scattergun;
 haxxyStatue = ScoutHaxxyStatueS;
-
-// 'GW' reward - *G*olden *W*eapon
-if(hasClassReward(global.paramPlayer, 'GW'))
-    tauntsprite = ScoutGoldTauntS;
-else
-    tauntsprite = ScoutTauntS;
 </argument>
       </arguments>
     </action>

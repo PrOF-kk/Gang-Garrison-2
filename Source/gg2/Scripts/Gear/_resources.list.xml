@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="initGear" type="RESOURCE"/>
+  <resource name="drawCharacterWithGear" type="RESOURCE"/>
+  <resource name="setGearOverlayInfo" type="RESOURCE"/>
+  <resource name="setGearOverlayInfoFromString" type="RESOURCE"/>
+  <resource name="setHeadPose" type="RESOURCE"/>
+  <resource name="setBasicHeadPoses" type="RESOURCE"/>
+  <resource name="initAllHeadPoses" type="RESOURCE"/>
+  <resource name="setHeadPosesFromString" type="RESOURCE"/>
+</resources>

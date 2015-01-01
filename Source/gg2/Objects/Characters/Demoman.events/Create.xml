@@ -17,12 +17,6 @@
 runPower = 1;
 weapons[0] = Minegun;
 haxxyStatue = DemomanHaxxyStatueS;
-
-// 'GW' reward - *G*olden *W*eapon
-if(hasClassReward(global.paramPlayer, 'GW'))
-    tauntsprite = DemoGoldTauntS;
-else
-    tauntsprite = DemoTauntS;
 </argument>
       </arguments>
     </action>

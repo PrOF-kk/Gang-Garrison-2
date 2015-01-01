@@ -13,8 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">humiliationPoses = QuoteRedHS;
-haxxyStatue = QuoteHaxxyStatueS;
+        <argument kind="STRING">haxxyStatue = QuoteHaxxyStatueS;
 </argument>
       </arguments>
     </action>

@@ -53,14 +53,26 @@ else
 
 // sprite resource selection
 var sprite, overlaySprite, noNewAnim;
-noNewAnim = player.class == CLASS_QUOTE or sprite_special or player.humiliated;
+noNewAnim = player.class == CLASS_QUOTE or player.humiliated;
+
+charSetSolids();
+var openright, openleft;
+openright = !collision_point_solid(x+6, bbox_bottom+2) and !collision_point_solid(x+2, bbox_bottom+2);
+openleft = !collision_point_solid(x-7, bbox_bottom+2) and !collision_point_solid(x-3, bbox_bottom+2);
+
+if (openright and openleft)
+{
+    openright = !collision_point_solid(bbox_right, bbox_bottom+2);
+    openleft = !collision_point_solid(bbox_left, bbox_bottom+2);
+}
+charUnsetSolids();
 
 if (zoomed)
 {
     if (team == TEAM_RED)
-        sprite = SniperCrouchRedS;
+        sprite = SniperRedCrouchS;
     else
-        sprite = SniperCrouchBlueS;
+        sprite = SniperBlueCrouchS;
     overlaySprite = sniperCrouchOverlay;
     animationImage = animationImage mod 2; // sniper crouch only has two frames, avoid overflow
 }
@@ -74,7 +86,6 @@ else if (!noNewAnim)
         if(still)
         {
             // set up vars for slope detection
-            charSetSolids();
             if(image_xscale &gt; 0)
             {
                 sprite_tilt_left = spriteLeanL;
@@ -90,25 +101,11 @@ else if (!noNewAnim)
             sprite = spriteStand;
             
             { // detect slopes
-                var openright, openleft;
-                openright = !collision_point_solid(x+6, bbox_bottom+2) and !collision_point_solid(x+2, bbox_bottom+2);
-                openleft = !collision_point_solid(x-7, bbox_bottom+2) and !collision_point_solid(x-3, bbox_bottom+2);
                 if (openright)
                     sprite = sprite_tilt_right;
                 if (openleft)
                     sprite = sprite_tilt_left;
-                if (openright and openleft)
-                {
-                    openright = !collision_point_solid(bbox_right, bbox_bottom+2);
-                    openleft = !collision_point_solid(bbox_left, bbox_bottom+2);
-                    if (openright)
-                        sprite = sprite_tilt_right;
-                    if (openleft)
-                        sprite = sprite_tilt_left;
-                }
             }
-                
-            charUnsetSolids();
         }
         else
         {
@@ -130,7 +127,7 @@ else
     overlaySprite = overlay;
 }
 
-if (sprite != sprite_index and (sprite == spriteLeanR or sprite == spriteLeanL)
+if (sprite != sprite_index and (openright or openleft)
     and !taunting and !omnomnomnom and !stabbing // These override "sprite"
     and !noNewAnim)
     yoffset = 6;
@@ -159,7 +156,6 @@ else
 if(!noNewAnim) // quote and sniper zoom still use the old anim system so animationOffset is still set, override it here for everything else
     animationOffset = 0;
 
-
 equipmentOffset += yoffset;
 overlayOffset += yoffset;
 
@@ -167,13 +163,23 @@ yr += yoffset;
 
 if (omnomnomnom)
 {
-    draw_sprite_ext_overlay(omnomnomnomSprite,omnomnomnomOverlay,omnomnomnomindex,xr,yr,image_xscale,image_yscale,image_angle,c_white,1);
+    var overlays;
+    overlays = ds_list_create();
+    ds_list_add(overlays, "PartyHat");
+    drawCharacterWithGear(omnomnomnomSprite, omnomnomnomindex, overlays, xr, yr, image_xscale, image_yscale, image_angle, c_white, 1);
+    ds_list_destroy(overlays);
+    
     if (ubered)
         draw_sprite_ext_overlay(omnomnomnomSprite,omnomnomnomOverlay,omnomnomnomindex,xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7);
 }
 else if (taunting)
 {
-    draw_sprite_ext_overlay(tauntsprite,tauntOverlay,tauntindex,xr,yr,image_xscale,image_yscale,image_angle,c_white,1);
+    var overlays;
+    overlays = ds_list_create();
+    ds_list_add(overlays, "PartyHat");
+    drawCharacterWithGear(tauntsprite, tauntindex, overlays, xr, yr, image_xscale, image_yscale, image_angle, c_white, 1);
+    ds_list_destroy(overlays);
+    
     if (ubered)
         draw_sprite_ext_overlay(tauntsprite,tauntOverlay,tauntindex,xr,yr,image_xscale,image_yscale,image_angle,ubercolour,0.7);
 }
@@ -196,7 +202,13 @@ else if (!taunting)
     else
     {
         if (!ubered)
-            draw_sprite_ext_overlay(sprite,overlaySprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,c_white,image_alpha,overlayOffset);
+        {
+            var overlays;
+            overlays = ds_list_create();
+            ds_list_add(overlays, "PartyHat");
+            drawCharacterWithGear(sprite, floor(animationImage+animationOffset), overlays, xr, yr, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+            ds_list_destroy(overlays);
+        }
         else if (ubered)
         {
             draw_sprite_ext_overlay(sprite,overlaySprite,floor(animationImage+animationOffset),xr,yr,image_xscale,image_yscale,image_angle,c_white,1,overlayOffset);

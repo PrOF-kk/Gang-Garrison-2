@@ -1,4 +1,4 @@
-{
+/*{
     sprite_assign(ScoutTauntS, ScoutTauntSP);
     sprite_assign(PyroTauntS, PyroTauntSP);
     sprite_assign(SoldierTauntS, SoldierTauntSP);
@@ -35,4 +35,4 @@
     sprite_assign(BloodDropS, BloodDropSP);
     sprite_assign(SniperCrouchRedS, SniperCrouchRedSP);
     sprite_assign(SniperCrouchBlueS, SniperCrouchBlueSP);
-}
+}*/
