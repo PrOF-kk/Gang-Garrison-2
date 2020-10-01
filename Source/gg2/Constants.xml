@@ -134,6 +134,7 @@
   <constant name="HEX" value="3"/>
   <constant name="GEAR_PARTY_HAT" value="&quot;PartyHat&quot;"/>
   <constant name="GEAR_CROWN" value="&quot;Crown&quot;"/>
+  <constant name="GEAR_XMAS_HAT" value="&quot;XmasHat&quot;"/>
   <constant name="GEAR_NAVIGATORHAT" value="&quot;NavigatorHat&quot;"/>
   <constant name="GEAR_RAYBANN_CAPE" value="&quot;RaybannCape&quot;"/>
   <constant name="GEAR_HAXXY_CAPE" value="&quot;HaxxyCape&quot;"/>

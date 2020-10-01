@@ -358,6 +358,10 @@
     {
         ds_list_add(gearList, GEAR_RAYBANN_CAPE);
     }
+    //TODO MOVE TO ELSE IF
+    if (true) {
+        ds_list_add(gearList, GEAR_XMAS_HAT);
+    }
     if(hasClassReward(player, 'GW'))
     {
         // 'GW' reward - *G*olden *W*eapon

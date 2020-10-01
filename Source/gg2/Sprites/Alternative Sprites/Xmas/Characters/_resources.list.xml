@@ -34,4 +34,7 @@
   <resource name="SniperBlueSX" type="RESOURCE"/>
   <resource name="SniperBlueDeadSX" type="RESOURCE"/>
   <resource name="QuerlyBlueSX" type="RESOURCE"/>
+  <resource name="XmasHatS" type="RESOURCE"/>
+  <resource name="RedXmasHatS" type="RESOURCE"/>
+  <resource name="BlueXmasHatS" type="RESOURCE"/>
 </resources>

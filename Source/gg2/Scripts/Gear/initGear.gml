@@ -5,6 +5,7 @@
 // To define the gear positions, defined rigging points are used (see initAllHeadPoses).
 
 initPartyHat();
+initXmasHat();
 initCrown();
 initNavigatorHat();
 initCape(RaybannCapeS, GEAR_RAYBANN_CAPE);
