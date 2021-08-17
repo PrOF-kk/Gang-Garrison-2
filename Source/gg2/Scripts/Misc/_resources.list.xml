@@ -13,4 +13,6 @@
   <resource name="format_timer_value" type="RESOURCE"/>
   <resource name="getRelativePathIfDescendant" type="RESOURCE"/>
   <resource name="asset_get_index" type="RESOURCE"/>
+  <resource name="doCheckSetupTimer" type="RESOURCE"/>
+  <resource name="shouldSetup" type="RESOURCE"/>
 </resources>
