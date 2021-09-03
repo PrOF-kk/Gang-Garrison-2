@@ -35,10 +35,7 @@ else
     yshift = 0;
 }
 
-if(global.setupTimer &gt; 0)
-    draw_roundtimer(xoffset, yoffset, xsize, ysize, timer);
-else
-    draw_kothtimer();
+draw_kothtimer();
 
 </argument>
       </arguments>

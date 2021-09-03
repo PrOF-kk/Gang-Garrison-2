@@ -16,12 +16,6 @@ if(areSetupGatesClosed())
         solid = true;
 }
 
-if(shouldSetup())
-{
-    with(TeamGate)
-        solid = true;
-}
-
 with(PlayerWall)
     solid = true;
 
